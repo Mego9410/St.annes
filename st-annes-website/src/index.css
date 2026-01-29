@@ -1,0 +1,136 @@
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Source+Sans+3:ital,wght@0,400;0,600;0,700;1,400&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --font-display: 'Plus Jakarta Sans', system-ui, sans-serif;
+    --font-body: 'Source Sans 3', system-ui, sans-serif;
+    /* Light theme: near-white, deep black text, link blue, primary teal */
+    --background: 0 0% 99%;
+    --foreground: 220 15% 8%;
+    --link: 220 70% 50%;
+    --card: 0 0% 100%;
+    --card-foreground: 220 15% 12%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 220 15% 12%;
+    --primary: 173 58% 39%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 220 14% 96%;
+    --secondary-foreground: 220 15% 12%;
+    --muted: 220 14% 96%;
+    --muted-foreground: 220 10% 46%;
+    --accent: 220 14% 94%;
+    --accent-foreground: 220 15% 12%;
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 220 13% 91%;
+    --input: 220 13% 91%;
+    --ring: 173 58% 39%;
+    --radius: 0.5rem;
+  }
+
+  .dark {
+    --background: 220 15% 9%;
+    --foreground: 0 0% 98%;
+    --link: 220 70% 65%;
+    --card: 220 15% 11%;
+    --card-foreground: 0 0% 98%;
+    --popover: 220 15% 11%;
+    --popover-foreground: 0 0% 98%;
+    --primary: 173 55% 50%;
+    --primary-foreground: 220 15% 9%;
+    --secondary: 220 12% 18%;
+    --secondary-foreground: 0 0% 98%;
+    --muted: 220 12% 18%;
+    --muted-foreground: 220 10% 60%;
+    --accent: 220 12% 22%;
+    --accent-foreground: 0 0% 98%;
+    --destructive: 0 62% 35%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 220 12% 22%;
+    --input: 220 12% 22%;
+    --ring: 173 55% 50%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  html {
+    scroll-behavior: smooth;
+  }
+  body {
+    @apply bg-background text-foreground antialiased;
+    font-family: var(--font-body);
+  }
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-display);
+  }
+}
+
+@layer components {
+  .text-hero {
+    @apply font-display font-bold tracking-tight;
+    font-size: clamp(2.5rem, 6vw, 4.5rem);
+    line-height: 1.1;
+  }
+  .text-display {
+    @apply font-display font-extrabold tracking-tight;
+    font-size: clamp(2.5rem, 6vw, 4.5rem);
+    line-height: 1.05;
+    letter-spacing: -0.02em;
+  }
+  .text-section_header {
+    @apply font-display font-semibold tracking-tight text-foreground;
+    font-size: clamp(1.5rem, 3vw, 2.25rem);
+  }
+  .text-section_title {
+    @apply font-display font-bold tracking-tight text-foreground;
+    font-size: clamp(1.75rem, 3.5vw, 2.5rem);
+  }
+  .text-paragraph_large {
+    @apply text-muted-foreground leading-relaxed;
+    font-size: 1.125rem;
+  }
+  .mt-none {
+    margin-top: 0;
+  }
+  a.text-link {
+    color: hsl(var(--link));
+  }
+  a.text-link:hover {
+    text-decoration: underline;
+  }
+
+  /* Hero image: watercolour-style treatment + fade at edges */
+  .hero-image-wrap {
+    -webkit-mask-image: radial-gradient(
+      ellipse 85% 85% at 45% 50%,
+      black 30%,
+      transparent 100%
+    );
+    mask-image: radial-gradient(
+      ellipse 85% 85% at 45% 50%,
+      black 30%,
+      transparent 100%
+    );
+    mask-size: 100% 100%;
+    mask-position: center;
+    mask-repeat: no-repeat;
+  }
+  .hero-image-watercolour {
+    filter: contrast(0.94) saturate(1.08) sepia(0.06);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
