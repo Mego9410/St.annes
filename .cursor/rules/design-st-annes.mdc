@@ -1,0 +1,15 @@
+---
+description: When doing design, styling, or UI work on the St. Anne's site, use the design brief and frontend-design skill.
+globs: 
+alwaysApply: false
+---
+
+# Design work — St. Anne's website
+
+When the user asks for **design**, **styling**, or **UI** changes on the St. Anne's site (or st-annes-website):
+
+1. **Use the frontend-design skill** — read `St.annes/skills/frontend-design/SKILL.md` and follow its design-thinking and aesthetics guidelines.
+2. **Read the design brief** — read `St.annes/reference/inspiration/INSPIRATION.md` and, when relevant, any screenshots in `St.annes/reference/inspiration/`.
+3. **Keep content and behaviour** — only change styling, layout, typography, and visual tone; do not remove or rewrite existing content or functionality.
+
+Apply the aesthetic direction, mood, likes, and don't-wants from the brief so the result feels distinctive and on-theme.
