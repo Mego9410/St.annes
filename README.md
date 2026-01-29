@@ -23,6 +23,14 @@ Project for St. Annes (website and related materials).
 2. **Skills**  
    See the `skills/` folder for skill definitions (e.g. `SKILL.md` in each subfolder).
 
+## Deploy to Vercel
+
+1. Import the repo in [Vercel](https://vercel.com).
+2. **Set Root Directory:** In the project, go to **Settings ? General ? Root Directory**, set it to **`st-annes-website`**, then save.
+3. Redeploy (Deployments ? ? on latest ? Redeploy).
+
+If Root Directory is left as the repo root, the site will 404 because the app and build live in `st-annes-website/`.
+
 ## License
 
 See individual folders and files for any license or attribution notes.
