@@ -32,6 +32,9 @@ lerna-debug.log*
 *.sln
 *.sw?
 
+# Duplicate local copy (canonical website is st-annes-website at repo root)
+St.annes/
+
 # IDE and AI tool directories (project-specific copies)
 .agent/
 .agents/

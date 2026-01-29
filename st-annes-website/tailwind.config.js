@@ -68,6 +68,10 @@ export default {
         "fade-in-up-slow": "fade-in-up 0.7s ease-out forwards",
         "fade-in": "fade-in 0.4s ease-out forwards",
       },
+      boxShadow: {
+        soft: "0 8px 32px rgba(24, 22, 20, 0.08)",
+        card: "0 2px 12px rgba(24, 22, 20, 0.04)",
+      },
     },
   },
   plugins: [tailwindcssAnimate],

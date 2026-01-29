@@ -8,30 +8,32 @@
   :root {
     --font-display: 'Fraunces', Georgia, serif;
     --font-body: 'DM Sans', system-ui, sans-serif;
-    /* Light theme: warm off-white, deep text, teal primary + amber accent for younger feel */
-    --background: 40 20% 98%;
-    --foreground: 220 18% 10%;
-    --link: 173 55% 38%;
+    /* One accent (teal), warm neutrals — cohesive, calm */
+    --background: 40 18% 98%;
+    --foreground: 24 14% 14%;
+    --link: 172 44% 34%;
     --card: 0 0% 100%;
-    --card-foreground: 220 18% 12%;
+    --card-foreground: 24 14% 14%;
     --popover: 0 0% 100%;
-    --popover-foreground: 220 18% 12%;
-    --primary: 173 58% 39%;
+    --popover-foreground: 24 14% 14%;
+    --primary: 172 44% 34%;
     --primary-foreground: 0 0% 100%;
-    --accent-warm: 38 92% 50%;
-    --accent-warm-foreground: 38 80% 12%;
-    --secondary: 40 15% 95%;
-    --secondary-foreground: 220 18% 12%;
-    --muted: 40 12% 94%;
-    --muted-foreground: 220 10% 42%;
-    --accent: 40 14% 93%;
-    --accent-foreground: 220 18% 12%;
-    --destructive: 0 84% 60%;
+    --accent-warm: 32 70% 48%;
+    --accent-warm-foreground: 32 60% 10%;
+    --secondary: 40 14% 94%;
+    --secondary-foreground: 24 14% 14%;
+    --muted: 40 12% 93%;
+    --muted-foreground: 24 8% 38%;
+    --accent: 40 12% 92%;
+    --accent-foreground: 24 14% 14%;
+    --destructive: 0 65% 48%;
     --destructive-foreground: 0 0% 98%;
-    --border: 40 12% 90%;
-    --input: 40 12% 91%;
-    --ring: 173 58% 39%;
-    --radius: 0.625rem;
+    --border: 38 12% 88%;
+    --input: 38 12% 90%;
+    --ring: 172 44% 34%;
+    --radius: 0.75rem;
+    --shadow-soft: 0 8px 32px rgba(24, 22, 20, 0.08);
+    --shadow-card: 0 2px 12px rgba(24, 22, 20, 0.04);
   }
 
   .dark {
@@ -78,9 +80,10 @@
 
 @layer components {
   .text-hero {
-    @apply font-display font-bold tracking-tight;
-    font-size: clamp(2.5rem, 6vw, 4.5rem);
-    line-height: 1.1;
+    @apply font-display font-bold tracking-tight text-foreground;
+    font-size: clamp(2.75rem, 6.5vw, 4.5rem);
+    line-height: 1.15;
+    letter-spacing: -0.01em;
   }
   .text-display {
     @apply font-display font-extrabold tracking-tight;
@@ -130,12 +133,12 @@
     filter: contrast(0.94) saturate(1.08) sepia(0.06);
   }
 
-  /* Subtle grain for depth (younger, editorial feel) */
+  /* Subtle grain for depth — warm pastoral feel */
   .grain-overlay::before {
     content: "";
     position: absolute;
     inset: 0;
-    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E");
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.025'/%3E%3C/svg%3E");
     pointer-events: none;
     z-index: 0;
   }
