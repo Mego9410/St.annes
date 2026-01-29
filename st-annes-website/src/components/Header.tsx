@@ -30,13 +30,13 @@ export default function Header() {
           St. Anne's Church, Chingford
         </Link>
 
-        <nav className="hidden md:flex md:items-center md:gap-0.5">
+        <nav className="hidden md:flex md:items-center md:gap-1">
           {navItems.map(({ to, label }) => (
             <Link
               key={to}
               to={to}
               className={cn(
-                "rounded-lg px-3 py-2 text-xs font-medium uppercase tracking-wider transition-colors hover:bg-accent hover:text-accent-foreground",
+                "rounded-lg px-3 py-2.5 text-sm font-medium transition-colors hover:bg-accent hover:text-accent-foreground",
                 location.pathname === to
                   ? "bg-accent text-accent-foreground"
                   : "text-foreground/90"
@@ -49,8 +49,8 @@ export default function Header() {
 
         <div className="hidden md:flex md:items-center md:gap-2 shrink-0">
           <Link to="/visit-and-contact">
-            <Button size="sm" className="font-medium">
-              Plan your visit
+            <Button variant="warm" size="sm" className="font-semibold">
+              Start here
             </Button>
           </Link>
         </div>
@@ -70,20 +70,20 @@ export default function Header() {
         <div className="border-t border-border/40 bg-background md:hidden">
           <nav className="container mx-auto flex flex-col gap-1 px-4 py-4">
             {navItems.map(({ to, label }) => (
-              <Link
-                key={to}
-                to={to}
-                onClick={() => setOpen(false)}
-                className={cn(
-                  "rounded-lg px-3 py-2 text-sm font-medium transition-colors hover:bg-accent",
-                  location.pathname === to ? "bg-accent" : ""
-                )}
-              >
-                {label}
-              </Link>
+            <Link
+              key={to}
+              to={to}
+              onClick={() => setOpen(false)}
+              className={cn(
+                "rounded-lg px-3 py-3 text-sm font-medium transition-colors hover:bg-accent",
+                location.pathname === to ? "bg-accent" : ""
+              )}
+            >
+              {label}
+            </Link>
             ))}
             <Link to="/visit-and-contact" onClick={() => setOpen(false)} className="mt-2">
-              <Button className="w-full">Plan your visit</Button>
+              <Button variant="warm" className="w-full font-semibold">Start here</Button>
             </Link>
           </nav>
         </div>

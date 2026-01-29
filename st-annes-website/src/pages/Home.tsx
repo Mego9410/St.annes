@@ -3,6 +3,7 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Select } from "@/components/ui/select";
 import { MapPin, Calendar, MessageCircle, Heart } from "lucide-react";
+import { useObserveReveal } from "@/lib/useScrollReveal";
 
 const WELCOME_LEAFLET_URL = "https://www.stannee4.org.uk/Forms/Welcome%20to%20St%20Annes.pdf";
 const ORDER_SERVICE_URL = "https://www.stannee4.org.uk/OrderService/litbook%20Ordinary%202.pdf";
@@ -13,36 +14,37 @@ const DIOCESAN_CONTACTS = "https://www.chelmsford.anglican.org/safeguarding/safe
 const LOCATION_OPTIONS = [{ value: "st-annes-chingford", label: "St. Anne's Church, Chingford" }];
 
 const nextSteps = [
-  { title: "Plan your visit", copy: "Find us, see our services, and get directions.", to: "/visit-and-contact", icon: MapPin, iconClass: "bg-amber-100 text-amber-700" },
-  { title: "Join us Sunday", copy: "See our weekly and special services.", to: "/services-and-events", icon: Calendar, iconClass: "bg-emerald-100 text-emerald-700" },
-  { title: "Get in touch", copy: "Send a message or ask a question.", to: "/visit-and-contact", icon: MessageCircle, iconClass: "bg-slate-100 text-slate-600" },
-  { title: "Give", copy: "Support St. Anne's through Parish Giving or easyfundraising.", to: "/give", icon: Heart, iconClass: "bg-amber-100 text-amber-700" },
+  { title: "Start here", copy: "Find us, see services, get directions.", to: "/visit-and-contact", icon: MapPin, iconClass: "bg-amber-100 text-amber-700" },
+  { title: "Join us Sunday", copy: "Weekly and special services.", to: "/services-and-events", icon: Calendar, iconClass: "bg-emerald-100 text-emerald-700" },
+  { title: "Get in touch", copy: "Drop us a message—we’d love to hear from you.", to: "/visit-and-contact", icon: MessageCircle, iconClass: "bg-slate-100 text-slate-600" },
+  { title: "Give", copy: "Support St. Anne's with Parish Giving or easyfundraising.", to: "/give", icon: Heart, iconClass: "bg-amber-100 text-amber-700" },
 ];
 
 export default function Home() {
   const navigate = useNavigate();
+  const containerRef = useObserveReveal();
 
   return (
-    <>
-      {/* Hero: condensed vertically, closer to top */}
-      <section className="bg-background pt-4 pb-6 md:pt-5 md:pb-8">
-        <div className="container mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
-          <div className="grid min-h-[300px] grid-cols-1 gap-6 lg:min-h-[50vh] lg:grid-cols-2 lg:gap-10 lg:items-stretch">
-            <div className="relative grid min-h-[280px] min-w-0 place-items-center bg-background lg:min-h-0 lg:h-full">
+    <div ref={containerRef}>
+      {/* Hero: warm background, grain, text overlaps image on lg for asymmetry */}
+      <section className="relative bg-background pt-4 pb-6 md:pt-5 md:pb-8 overflow-hidden grain-overlay">
+        <div className="container relative mx-auto max-w-6xl px-4 sm:px-6 lg:px-8 z-10">
+          <div className="grid min-h-[300px] grid-cols-1 gap-6 lg:min-h-[50vh] lg:grid-cols-2 lg:gap-8 lg:items-center">
+            <div className="relative order-2 lg:order-1 grid min-h-[280px] min-w-0 place-items-center lg:min-h-0 lg:h-full lg:-mr-8">
               <img
                 src="/hero-watercolour.png"
                 alt="St. Anne's Church, Chingford — watercolour"
-                className="h-full max-h-[50vh] w-full max-w-full object-contain object-center"
+                className="h-full max-h-[50vh] w-full max-w-full object-contain object-center drop-shadow-lg"
               />
             </div>
-            <div className="flex flex-col justify-center px-0 py-6 lg:px-4 lg:py-8">
+            <div className="order-1 lg:order-2 flex flex-col justify-center px-0 py-6 lg:px-4 lg:py-8 lg:pl-0 lg:z-10">
               <h1 className="text-hero text-foreground animate-[fade-in-up_0.6s_ease-out]">
                 There's a place for you here
               </h1>
-              <p className="mt-6 max-w-xl text-paragraph_large text-muted-foreground animate-[fade-in-up_0.6s_ease-out_0.1s_both]">
-                A warm, caring community in Chingford where you can explore faith and connect with others.
+              <p className="mt-5 max-w-xl text-paragraph_large text-muted-foreground animate-[fade-in-up_0.6s_ease-out_0.1s_both]">
+                A warm community in Chingford—explore faith, meet people, and figure it out at your own pace.
               </p>
-              <div className="mt-10 space-y-4 animate-[fade-in-up_0.6s_ease-out_0.2s_both]">
+              <div className="mt-8 space-y-4 animate-[fade-in-up_0.6s_ease-out_0.2s_both]">
                 <Link
                   to="/visit-and-contact"
                   className="inline-flex items-center gap-2 text-sm font-medium text-link underline underline-offset-4 hover:no-underline"
@@ -59,10 +61,10 @@ export default function Home() {
                   aria-label="Choose a location"
                 />
               </div>
-              <div className="mt-8">
+              <div className="mt-6">
                 <Link to="/visit-and-contact">
-                  <Button size="lg" className="text-base px-8">
-                    Plan your visit
+                  <Button variant="warm" size="lg" className="text-base px-8 font-semibold">
+                    Start here
                   </Button>
                 </Link>
               </div>
@@ -71,17 +73,22 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Take your next step — icon-driven cards (Life.Church style) */}
-      <section className="container mx-auto max-w-6xl px-4 pt-6 pb-24 sm:px-6 lg:px-8">
+      {/* Take your next step — scroll reveal + staggered cards, stronger hover */}
+      <section className="reveal-on-scroll container mx-auto max-w-6xl px-4 pt-6 pb-24 sm:px-6 lg:px-8">
         <h2 className="text-section_title text-center mb-14">Take your next step</h2>
-        <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4 max-w-6xl mx-auto">
-          {nextSteps.map((step) => {
+        <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4 max-w-6xl mx-auto stagger-children">
+          {nextSteps.map((step, i) => {
             const Icon = step.icon;
             return (
-              <Link key={step.to} to={step.to} className="group block h-full">
-                <Card className="h-full transition-all duration-200 hover:shadow-lg hover:-translate-y-0.5 focus-within:ring-2 focus-within:ring-primary focus-within:ring-offset-2 p-6">
+              <Link
+                key={step.to}
+                to={step.to}
+                className="group block h-full stagger-child"
+                style={{ transitionDelay: `${i * 0.08}s` }}
+              >
+                <Card className="h-full transition-all duration-300 hover:shadow-xl hover:-translate-y-1 hover:border-primary/20 focus-within:ring-2 focus-within:ring-primary focus-within:ring-offset-2 p-6">
                   <div className="flex items-start gap-4">
-                    <div className={`flex h-14 w-14 shrink-0 items-center justify-center rounded-full ${step.iconClass}`} aria-hidden>
+                    <div className={`flex h-14 w-14 shrink-0 items-center justify-center rounded-full transition-transform duration-300 group-hover:scale-110 ${step.iconClass}`} aria-hidden>
                       <Icon className="h-7 w-7" />
                     </div>
                     <div className="min-w-0 flex-1">
@@ -101,8 +108,8 @@ export default function Home() {
         </div>
       </section>
 
-      {/* New to St. Anne's? — dark full-bleed with dual CTAs (Life.Church style) */}
-      <section className="relative min-h-[400px] overflow-hidden py-24">
+      {/* New to St. Anne's? — dark full-bleed, scroll reveal, punchier copy */}
+      <section className="reveal-on-scroll relative min-h-[400px] overflow-hidden py-24">
         <img
           src="https://www.stannee4.org.uk/images/IMG_5545.jpg"
           alt=""
@@ -110,21 +117,21 @@ export default function Home() {
           aria-hidden
         />
         <div className="absolute inset-0 bg-black/60" aria-hidden />
-        <div className="container relative mx-auto flex flex-col items-center justify-center px-4 text-center">
+        <div className="container relative mx-auto flex flex-col items-center justify-center px-4 text-center z-10">
           <div className="max-w-2xl">
             <h2 className="text-section_title text-white">New to St. Anne's?</h2>
             <p className="mt-6 text-paragraph_large text-white/95">
-              You'll find a safe place to explore your beliefs and connect with others. Wherever you are in life, you're welcome here.
+              Safe space to explore, ask questions, and connect. Wherever you're at—you're welcome.
             </p>
             <div className="mt-10 flex flex-wrap justify-center gap-4">
               <Link to="/about">
-                <Button variant="primary-inverse" size="lg" className="text-base px-8">
+                <Button variant="primary-inverse" size="lg" className="text-base px-8 font-semibold">
                   Learn more about us
                 </Button>
               </Link>
               <Link to="/visit-and-contact">
-                <Button variant="outline-inverse" size="lg" className="text-base px-8">
-                  Plan your visit
+                <Button variant="outline-inverse" size="lg" className="text-base px-8 font-semibold">
+                  Start here
                 </Button>
               </Link>
             </div>
@@ -132,10 +139,10 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Our Story / Vision — two-column: media left, text + CTA right (Life.Church style) */}
-      <section className="bg-background">
+      {/* Our Story — scroll reveal, slightly tighter copy */}
+      <section className="reveal-on-scroll bg-background">
         <div className="container mx-auto grid grid-cols-1 gap-12 px-4 py-24 lg:grid-cols-2 lg:items-center lg:gap-16">
-          <div className="overflow-hidden rounded-xl shadow-[0_4px_20px_rgba(0,0,0,0.12)]">
+          <div className="overflow-hidden rounded-2xl shadow-[0_8px_30px_rgba(0,0,0,0.08)]">
             <img
               src="https://www.stannee4.org.uk/images/IMG_5545.jpg"
               alt="St. Anne's Church community"
@@ -145,14 +152,13 @@ export default function Home() {
           <div>
             <h2 className="text-section_title mb-6">Our Story</h2>
             <p className="text-paragraph_large text-muted-foreground">
-              St. Anne's Church Vision is of a warm, friendly, caring community, where all, including you, are welcome.
-              We are committed to living out the love of God, revealed in Jesus Christ, in word, worship, service and joy.
-              We celebrate human diversity and actively promote equality and acceptance.
-              We aspire to respond to the needs of others and to be faithful stewards of God's creation, our mother earth.
+              We're a warm, friendly community where everyone—including you—is welcome.
+              We try to live out God's love in word, worship, service, and joy; we value diversity and equality,
+              and we care for each other and for the planet.
             </p>
             <div className="mt-8 flex flex-wrap gap-4">
               <Link to="/about">
-                <Button size="lg" className="bg-foreground text-background hover:bg-foreground/90 text-base px-8">
+                <Button size="lg" className="bg-foreground text-background hover:bg-foreground/90 text-base px-8 font-semibold">
                   Our beliefs
                 </Button>
               </Link>
@@ -166,8 +172,8 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Experience St. Anne's for yourself — full-bleed with overlay and location (Life.Church style) */}
-      <section className="relative min-h-[420px] overflow-hidden py-24">
+      {/* Experience St. Anne's — full-bleed, scroll reveal, punchier line */}
+      <section className="reveal-on-scroll relative min-h-[420px] overflow-hidden py-24">
         <img
           src="https://www.stannee4.org.uk/images/IMG_5545.jpg"
           alt=""
@@ -175,11 +181,11 @@ export default function Home() {
           aria-hidden
         />
         <div className="absolute inset-0 bg-slate-800/55" aria-hidden />
-        <div className="container relative mx-auto flex flex-col items-center justify-center px-4 text-center">
-          <div className="max-w-2xl animate-[fade-in-up_0.6s_ease-out]">
+        <div className="container relative mx-auto flex flex-col items-center justify-center px-4 text-center z-10">
+          <div className="max-w-2xl">
             <h2 className="text-section_title text-white">Experience St. Anne's for yourself</h2>
             <p className="mt-4 text-paragraph_large text-white/95">
-              Find out what you can expect when you attend at St. Anne's.
+              See what a Sunday looks like—no pressure, just come as you are.
             </p>
             <div className="mt-10 space-y-4">
               <Link
@@ -205,8 +211,8 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Noticeboard */}
-      <section className="border-t border-border bg-muted/20 py-24">
+      {/* Noticeboard — scroll reveal */}
+      <section className="reveal-on-scroll border-t border-border bg-muted/20 py-24">
         <div className="container mx-auto px-4">
           <h2 className="text-section_header text-center mb-12">Noticeboard</h2>
           <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3 max-w-5xl mx-auto">
@@ -251,8 +257,8 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Orders of Service & Safeguarding */}
-      <section className="container mx-auto px-4 py-24">
+      {/* Orders of Service & Safeguarding — scroll reveal */}
+      <section className="reveal-on-scroll container mx-auto px-4 py-24">
         <div className="mx-auto max-w-3xl">
           <h2 className="text-section_header mb-4">Orders of Service</h2>
           <p className="text-muted-foreground mb-8">
@@ -280,6 +286,6 @@ export default function Home() {
           </div>
         </div>
       </section>
-    </>
+    </div>
   );
 }

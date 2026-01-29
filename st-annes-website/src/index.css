@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Source+Sans+3:ital,wght@0,400;0,600;0,700;1,400&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,400&family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&display=swap');
 
 @tailwind base;
 @tailwind components;
@@ -6,42 +6,46 @@
 
 @layer base {
   :root {
-    --font-display: 'Plus Jakarta Sans', system-ui, sans-serif;
-    --font-body: 'Source Sans 3', system-ui, sans-serif;
-    /* Light theme: near-white, deep black text, link blue, primary teal */
-    --background: 0 0% 99%;
-    --foreground: 220 15% 8%;
-    --link: 220 70% 50%;
+    --font-display: 'Fraunces', Georgia, serif;
+    --font-body: 'DM Sans', system-ui, sans-serif;
+    /* Light theme: warm off-white, deep text, teal primary + amber accent for younger feel */
+    --background: 40 20% 98%;
+    --foreground: 220 18% 10%;
+    --link: 173 55% 38%;
     --card: 0 0% 100%;
-    --card-foreground: 220 15% 12%;
+    --card-foreground: 220 18% 12%;
     --popover: 0 0% 100%;
-    --popover-foreground: 220 15% 12%;
+    --popover-foreground: 220 18% 12%;
     --primary: 173 58% 39%;
     --primary-foreground: 0 0% 100%;
-    --secondary: 220 14% 96%;
-    --secondary-foreground: 220 15% 12%;
-    --muted: 220 14% 96%;
-    --muted-foreground: 220 10% 46%;
-    --accent: 220 14% 94%;
-    --accent-foreground: 220 15% 12%;
+    --accent-warm: 38 92% 50%;
+    --accent-warm-foreground: 38 80% 12%;
+    --secondary: 40 15% 95%;
+    --secondary-foreground: 220 18% 12%;
+    --muted: 40 12% 94%;
+    --muted-foreground: 220 10% 42%;
+    --accent: 40 14% 93%;
+    --accent-foreground: 220 18% 12%;
     --destructive: 0 84% 60%;
     --destructive-foreground: 0 0% 98%;
-    --border: 220 13% 91%;
-    --input: 220 13% 91%;
+    --border: 40 12% 90%;
+    --input: 40 12% 91%;
     --ring: 173 58% 39%;
-    --radius: 0.5rem;
+    --radius: 0.625rem;
   }
 
   .dark {
     --background: 220 15% 9%;
     --foreground: 0 0% 98%;
-    --link: 220 70% 65%;
+    --link: 173 55% 55%;
     --card: 220 15% 11%;
     --card-foreground: 0 0% 98%;
     --popover: 220 15% 11%;
     --popover-foreground: 0 0% 98%;
     --primary: 173 55% 50%;
     --primary-foreground: 220 15% 9%;
+    --accent-warm: 38 92% 55%;
+    --accent-warm-foreground: 38 80% 8%;
     --secondary: 220 12% 18%;
     --secondary-foreground: 0 0% 98%;
     --muted: 220 12% 18%;
@@ -124,6 +128,38 @@
   }
   .hero-image-watercolour {
     filter: contrast(0.94) saturate(1.08) sepia(0.06);
+  }
+
+  /* Subtle grain for depth (younger, editorial feel) */
+  .grain-overlay::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E");
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  /* Scroll-triggered reveal (use with .reveal-on-scroll) */
+  .reveal-on-scroll {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+  }
+  .reveal-on-scroll.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* Stagger children when parent .reveal-on-scroll gets .is-visible */
+  .reveal-on-scroll .stagger-child {
+    opacity: 0;
+    transform: translateY(16px);
+    transition: opacity 0.45s ease-out, transform 0.45s ease-out;
+  }
+  .reveal-on-scroll.is-visible .stagger-child {
+    opacity: 1;
+    transform: translateY(0);
   }
 }
 
