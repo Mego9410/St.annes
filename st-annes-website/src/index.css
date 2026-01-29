@@ -1,0 +1,172 @@
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,400&family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --font-display: 'Fraunces', Georgia, serif;
+    --font-body: 'DM Sans', system-ui, sans-serif;
+    /* Light theme: warm off-white, deep text, teal primary + amber accent for younger feel */
+    --background: 40 20% 98%;
+    --foreground: 220 18% 10%;
+    --link: 173 55% 38%;
+    --card: 0 0% 100%;
+    --card-foreground: 220 18% 12%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 220 18% 12%;
+    --primary: 173 58% 39%;
+    --primary-foreground: 0 0% 100%;
+    --accent-warm: 38 92% 50%;
+    --accent-warm-foreground: 38 80% 12%;
+    --secondary: 40 15% 95%;
+    --secondary-foreground: 220 18% 12%;
+    --muted: 40 12% 94%;
+    --muted-foreground: 220 10% 42%;
+    --accent: 40 14% 93%;
+    --accent-foreground: 220 18% 12%;
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 40 12% 90%;
+    --input: 40 12% 91%;
+    --ring: 173 58% 39%;
+    --radius: 0.625rem;
+  }
+
+  .dark {
+    --background: 220 15% 9%;
+    --foreground: 0 0% 98%;
+    --link: 173 55% 55%;
+    --card: 220 15% 11%;
+    --card-foreground: 0 0% 98%;
+    --popover: 220 15% 11%;
+    --popover-foreground: 0 0% 98%;
+    --primary: 173 55% 50%;
+    --primary-foreground: 220 15% 9%;
+    --accent-warm: 38 92% 55%;
+    --accent-warm-foreground: 38 80% 8%;
+    --secondary: 220 12% 18%;
+    --secondary-foreground: 0 0% 98%;
+    --muted: 220 12% 18%;
+    --muted-foreground: 220 10% 60%;
+    --accent: 220 12% 22%;
+    --accent-foreground: 0 0% 98%;
+    --destructive: 0 62% 35%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 220 12% 22%;
+    --input: 220 12% 22%;
+    --ring: 173 55% 50%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  html {
+    scroll-behavior: smooth;
+  }
+  body {
+    @apply bg-background text-foreground antialiased;
+    font-family: var(--font-body);
+  }
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-display);
+  }
+}
+
+@layer components {
+  .text-hero {
+    @apply font-display font-bold tracking-tight;
+    font-size: clamp(2.5rem, 6vw, 4.5rem);
+    line-height: 1.1;
+  }
+  .text-display {
+    @apply font-display font-extrabold tracking-tight;
+    font-size: clamp(2.5rem, 6vw, 4.5rem);
+    line-height: 1.05;
+    letter-spacing: -0.02em;
+  }
+  .text-section_header {
+    @apply font-display font-semibold tracking-tight text-foreground;
+    font-size: clamp(1.5rem, 3vw, 2.25rem);
+  }
+  .text-section_title {
+    @apply font-display font-bold tracking-tight text-foreground;
+    font-size: clamp(1.75rem, 3.5vw, 2.5rem);
+  }
+  .text-paragraph_large {
+    @apply text-muted-foreground leading-relaxed;
+    font-size: 1.125rem;
+  }
+  .mt-none {
+    margin-top: 0;
+  }
+  a.text-link {
+    color: hsl(var(--link));
+  }
+  a.text-link:hover {
+    text-decoration: underline;
+  }
+
+  /* Hero image: watercolour-style treatment + fade at edges */
+  .hero-image-wrap {
+    -webkit-mask-image: radial-gradient(
+      ellipse 85% 85% at 45% 50%,
+      black 30%,
+      transparent 100%
+    );
+    mask-image: radial-gradient(
+      ellipse 85% 85% at 45% 50%,
+      black 30%,
+      transparent 100%
+    );
+    mask-size: 100% 100%;
+    mask-position: center;
+    mask-repeat: no-repeat;
+  }
+  .hero-image-watercolour {
+    filter: contrast(0.94) saturate(1.08) sepia(0.06);
+  }
+
+  /* Subtle grain for depth (younger, editorial feel) */
+  .grain-overlay::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E");
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  /* Scroll-triggered reveal (use with .reveal-on-scroll) */
+  .reveal-on-scroll {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+  }
+  .reveal-on-scroll.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* Stagger children when parent .reveal-on-scroll gets .is-visible */
+  .reveal-on-scroll .stagger-child {
+    opacity: 0;
+    transform: translateY(16px);
+    transition: opacity 0.45s ease-out, transform 0.45s ease-out;
+  }
+  .reveal-on-scroll.is-visible .stagger-child {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
