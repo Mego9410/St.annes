@@ -1,0 +1,8 @@
+{
+  "buildCommand": "cd st-annes-website && npm run build",
+  "outputDirectory": "st-annes-website/dist",
+  "installCommand": "cd st-annes-website && npm install",
+  "rewrites": [
+    { "source": "/(.*)", "destination": "/index.html" }
+  ]
+}
