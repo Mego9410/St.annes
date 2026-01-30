@@ -2,7 +2,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 
 export default function Environment() {
   return (
-    <div className="container mx-auto px-4 py-24">
+    <div className="container mx-auto px-4 sm:px-6 pt-8 pb-24">
       <h1 className="text-section_title mb-12">St. Anne's and the Environment</h1>
       <div className="max-w-3xl space-y-8">
         <Card>
@@ -33,13 +33,13 @@ export default function Environment() {
           <CardHeader>
             <CardTitle>Resources (PDFs)</CardTitle>
           </CardHeader>
-          <CardContent className="space-y-2 text-sm">
-            <a href="https://www.stannee4.org.uk/Leaflets/nine-ways.pdf" target="_blank" rel="noopener noreferrer" className="block text-link hover:underline">Nine ways of living gently on earth</a>
-            <a href="https://www.stannee4.org.uk/Leaflets/UseYourLoaf.pdf" target="_blank" rel="noopener noreferrer" className="block text-link hover:underline">Use your LOAF leaflet</a>
-            <a href="https://www.stannee4.org.uk/Leaflets/biodiversity.pdf" target="_blank" rel="noopener noreferrer" className="block text-link hover:underline">Biodiversity Leaflet</a>
-            <a href="https://www.stannee4.org.uk/Leaflets/G.C.-7-Rs-Leaflet.pdf" target="_blank" rel="noopener noreferrer" className="block text-link hover:underline">7Rs Leaflet</a>
-            <a href="https://www.stannee4.org.uk/Leaflets/It-is-possible.pdf" target="_blank" rel="noopener noreferrer" className="block text-link hover:underline">It is possible… To live differently</a>
-            <a href="https://www.stannee4.org.uk/Leaflets/Lifestyle%20Leaflet.pdf" target="_blank" rel="noopener noreferrer" className="block text-link hover:underline">Ways in which we can make a difference</a>
+          <CardContent className="space-y-0 text-sm">
+            <a href="https://www.stannee4.org.uk/Leaflets/nine-ways.pdf" target="_blank" rel="noopener noreferrer" className="flex min-h-[44px] items-center py-2 text-link hover:underline md:min-h-0 md:py-1">Nine ways of living gently on earth</a>
+            <a href="https://www.stannee4.org.uk/Leaflets/UseYourLoaf.pdf" target="_blank" rel="noopener noreferrer" className="flex min-h-[44px] items-center py-2 text-link hover:underline md:min-h-0 md:py-1">Use your LOAF leaflet</a>
+            <a href="https://www.stannee4.org.uk/Leaflets/biodiversity.pdf" target="_blank" rel="noopener noreferrer" className="flex min-h-[44px] items-center py-2 text-link hover:underline md:min-h-0 md:py-1">Biodiversity Leaflet</a>
+            <a href="https://www.stannee4.org.uk/Leaflets/G.C.-7-Rs-Leaflet.pdf" target="_blank" rel="noopener noreferrer" className="flex min-h-[44px] items-center py-2 text-link hover:underline md:min-h-0 md:py-1">7Rs Leaflet</a>
+            <a href="https://www.stannee4.org.uk/Leaflets/It-is-possible.pdf" target="_blank" rel="noopener noreferrer" className="flex min-h-[44px] items-center py-2 text-link hover:underline md:min-h-0 md:py-1">It is possible… To live differently</a>
+            <a href="https://www.stannee4.org.uk/Leaflets/Lifestyle%20Leaflet.pdf" target="_blank" rel="noopener noreferrer" className="flex min-h-[44px] items-center py-2 text-link hover:underline md:min-h-0 md:py-1">Ways in which we can make a difference</a>
           </CardContent>
         </Card>
         <Card>

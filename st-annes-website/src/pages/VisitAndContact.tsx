@@ -1,4 +1,5 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { useLocation } from "react-router-dom";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -6,7 +7,14 @@ import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 
 export default function VisitAndContact() {
+  const location = useLocation();
   const [submitted, setSubmitted] = useState(false);
+  const [message, setMessage] = useState("");
+
+  useEffect(() => {
+    const bookingMessage = (location.state as { bookingMessage?: string } | null)?.bookingMessage;
+    if (bookingMessage) setMessage(bookingMessage);
+  }, [location.state]);
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -14,7 +22,7 @@ export default function VisitAndContact() {
   };
 
   return (
-    <div className="container mx-auto px-4 py-24">
+    <div className="container mx-auto px-4 sm:px-6 pt-8 pb-24">
       <h1 className="text-section_title mb-12">Visit & Contact</h1>
       <div className="grid gap-8 lg:grid-cols-2 max-w-5xl">
         <Card>
@@ -59,7 +67,15 @@ export default function VisitAndContact() {
                 </div>
                 <div>
                   <Label htmlFor="message">Message</Label>
-                  <Textarea id="message" name="message" required rows={4} className="mt-1" />
+                  <Textarea
+                    id="message"
+                    name="message"
+                    required
+                    rows={6}
+                    className="mt-1"
+                    value={message}
+                    onChange={(e) => setMessage(e.target.value)}
+                  />
                 </div>
                 <Button type="submit">Send message</Button>
               </form>

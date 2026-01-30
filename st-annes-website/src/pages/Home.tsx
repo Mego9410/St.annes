@@ -2,7 +2,7 @@ import { useMemo } from "react";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Calendar, MessageCircle } from "lucide-react";
+import { Calendar } from "lucide-react";
 import { useObserveReveal } from "@/lib/useScrollReveal";
 import upcomingEvents from "@/data/events.json";
 
@@ -45,7 +45,7 @@ const NEWEST_NEWSLETTER_URL = "https://www.stannee4.org.uk/Newssheet/2026%2002%2
 const nextSteps = [
   { title: "Events", copy: "Services, gatherings, and what's on at St. Anne's.", to: "/services-and-events", icon: Calendar, iconClass: "bg-primary/10 text-primary", featured: true },
   { title: "Join us Sunday", copy: "Weekly and special services.", to: "/services-and-events", icon: Calendar, iconClass: "bg-secondary text-foreground" },
-  { title: "Get in touch", copy: "Drop us a message—we’d love to hear from you.", to: "/visit-and-contact", icon: MessageCircle, iconClass: "bg-muted text-muted-foreground" },
+  { title: "Book an event", copy: "Hire our hall for your celebration or community group.", to: "/church-centre", icon: Calendar, iconClass: "bg-muted text-muted-foreground" },
 ];
 
 export default function Home() {
@@ -57,15 +57,15 @@ export default function Home() {
       {/* Wrapper: hero + Take your next step — watercolour 0.9×, shifted left; text left edge on centre line */}
       <div className="relative overflow-hidden bg-background">
         <div
-          className="absolute top-0 left-0 z-0 h-[864px] w-full bg-contain bg-no-repeat md:h-[936px] lg:h-[1008px]"
-          style={{ backgroundImage: "url(/hero-bg-watercolour.png)", backgroundPosition: "-18% 0", backgroundSize: "contain" }}
+          className="hero-bg absolute top-0 left-0 z-0 h-[864px] w-full bg-contain bg-no-repeat md:h-[936px] lg:h-[1008px]"
+          style={{ backgroundImage: "url(/hero-bg-watercolour.png)" }}
           aria-hidden
         />
 
         <section className="relative z-10 overflow-hidden">
-          <div className="container relative mx-auto flex min-h-[320px] max-w-6xl flex-col items-center px-4 pt-8 pb-14 sm:px-6 md:min-h-[360px] md:pt-10 md:pb-16 lg:flex-row lg:items-center lg:justify-start lg:px-8 lg:pt-12 lg:pb-20">
+          <div className="container relative mx-auto flex min-h-[320px] max-w-6xl flex-col items-center px-4 pt-[29vh] pb-6 sm:px-6 sm:pt-[25vh] md:min-h-[360px] md:pt-10 md:pb-8 lg:flex-row lg:pb-10 lg:items-center lg:justify-start lg:px-8 lg:pt-12 lg:pb-20">
             <div className="hidden shrink-0 lg:block lg:w-[55%]" aria-hidden />
-            <div className="mt-8 flex w-full max-w-lg flex-col justify-center rounded-2xl border border-white/30 bg-white/55 p-6 shadow-lg backdrop-blur-[6px] lg:mt-12 lg:w-[45%] lg:min-w-0 lg:p-8">
+            <div className="mt-0 flex w-full max-w-lg flex-col justify-center rounded-2xl border border-white/30 bg-white/55 p-5 shadow-lg backdrop-blur-[6px] md:mt-8 md:p-6 lg:mt-12 lg:w-[45%] lg:min-w-0 lg:p-8">
               <p className="text-sm font-medium uppercase tracking-widest text-primary">
                 St. Anne's, Chingford
               </p>
@@ -77,7 +77,7 @@ export default function Home() {
                 A warm community in Chingford—explore faith, meet people, and figure it out at your own pace.
               </p>
               <div className="mt-10">
-                <Link to="/visit-and-contact">
+                <Link to="/services-and-events">
                   <Button variant="default" size="lg" className="text-base px-10 font-semibold shadow-soft">
                     Start here
                   </Button>
@@ -88,7 +88,7 @@ export default function Home() {
         </section>
 
         <section className="reveal-on-scroll relative z-10">
-          <div className="container mx-auto max-w-6xl px-4 pt-28 pb-28 sm:px-6 lg:px-8 lg:pt-40">
+          <div className="container mx-auto max-w-6xl px-4 pt-8 pb-28 sm:px-6 lg:px-8 lg:pt-12 lg:pb-28">
           <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3 max-w-5xl mx-auto stagger-children">
           {nextSteps.map((step, i) => {
             const Icon = step.icon;
@@ -128,7 +128,7 @@ export default function Home() {
       </div>
 
       {/* New to St. Anne's? — almost full-width rounded container, warm overlay, scroll reveal */}
-      <section className="reveal-on-scroll px-4 pt-12 pb-24 sm:px-6 lg:px-8 lg:pt-16">
+      <section className="reveal-on-scroll px-4 pt-6 pb-12 sm:px-6 lg:px-8 lg:pt-8 lg:pb-16">
         <div className="relative mx-auto min-h-[400px] w-full max-w-[1536px] overflow-hidden rounded-3xl">
           <img
             src="/new-to-st-annes.png"
@@ -148,7 +148,7 @@ export default function Home() {
                     Learn more about us
                   </Button>
                 </Link>
-                <Link to="/visit-and-contact">
+                <Link to="/services-and-events">
                   <Button variant="outline-inverse" size="lg" className="text-base px-8 font-semibold">
                     Start here
                   </Button>
@@ -161,7 +161,7 @@ export default function Home() {
 
       {/* Our Story — scroll reveal, image only */}
       <section className="reveal-on-scroll bg-background">
-        <div className="container mx-auto grid grid-cols-1 gap-12 px-4 py-24 lg:grid-cols-2 lg:items-center lg:gap-16">
+        <div className="container mx-auto grid grid-cols-1 gap-12 px-4 py-16 lg:grid-cols-2 lg:items-center lg:gap-16 lg:py-24">
           <div>
             <img
               src="/our-story-church.png"
@@ -241,7 +241,7 @@ export default function Home() {
                     href={EVENTS_DIARY_URL}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex items-baseline gap-3 py-2 px-3 rounded-md text-sm text-foreground hover:bg-muted/60 hover:text-primary transition-colors group"
+                    className="flex items-center gap-3 py-3 px-3 rounded-md text-sm text-foreground hover:bg-muted/60 hover:text-primary transition-colors group min-h-[44px] md:py-2 md:min-h-0 md:items-baseline"
                   >
                     <span className="shrink-0 font-medium tabular-nums text-muted-foreground group-hover:text-primary">{date}</span>
                     <span className="min-w-0">{title}</span>

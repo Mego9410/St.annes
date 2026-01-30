@@ -113,6 +113,18 @@
     text-decoration: underline;
   }
 
+  /* Hero background: responsive position/size for mobile */
+  .hero-bg {
+    background-position: -18% 0;
+    background-size: contain;
+  }
+  @media (max-width: 767px) {
+    .hero-bg {
+      background-position: 0 0;
+      background-size: cover;
+    }
+  }
+
   /* Hero image: watercolour-style treatment + fade at edges */
   .hero-image-wrap {
     -webkit-mask-image: radial-gradient(

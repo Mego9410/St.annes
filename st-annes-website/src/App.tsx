@@ -9,6 +9,7 @@ import Environment from "./pages/Environment";
 import About from "./pages/About";
 import VisitAndContact from "./pages/VisitAndContact";
 import Resources from "./pages/Resources";
+import BookingEnquiry from "./pages/BookingEnquiry";
 
 export default function App() {
   return (
@@ -19,6 +20,7 @@ export default function App() {
         <Route path="news" element={<News />} />
         <Route path="give" element={<Give />} />
         <Route path="church-centre" element={<ChurchCentre />} />
+        <Route path="church-centre/booking-enquiry" element={<BookingEnquiry />} />
         <Route path="environment" element={<Environment />} />
         <Route path="about" element={<About />} />
         <Route path="visit-and-contact" element={<VisitAndContact />} />

@@ -123,7 +123,7 @@ export default function Header() {
         </nav>
 
         <div className="hidden md:flex md:items-center md:gap-2 shrink-0">
-          <Link to="/visit-and-contact">
+          <Link to="/services-and-events">
             <Button variant="default" size="sm" className="font-semibold">
               Start here
             </Button>
@@ -143,7 +143,7 @@ export default function Header() {
 
       {open && (
         <div className="border-t border-border/40 bg-background md:hidden">
-          <nav className="container mx-auto flex flex-col gap-1 px-4 py-4">
+          <nav className="container mx-auto flex flex-col gap-2 px-4 py-4">
             {navItems.map((item) => {
               if (isDropdown(item)) {
                 const key = item.label.replace(/\s+/g, "-");
@@ -154,7 +154,7 @@ export default function Header() {
                       type="button"
                       onClick={() => setOpenSubmenu(expanded ? null : key)}
                       className={cn(
-                        "flex w-full items-center justify-between rounded-lg px-3 py-3 text-left text-sm font-medium transition-colors hover:bg-accent",
+                        "flex w-full min-h-[44px] items-center justify-between rounded-lg px-3 py-3 text-left text-sm font-medium transition-colors hover:bg-accent",
                         pathMatchesDropdown(location.pathname, item) ? "bg-accent" : ""
                       )}
                       aria-expanded={expanded}
@@ -179,7 +179,7 @@ export default function Header() {
                             to={child.to}
                             onClick={closeAll}
                             className={cn(
-                              "rounded-lg px-3 py-2.5 text-sm font-medium transition-colors hover:bg-accent",
+                              "rounded-lg px-3 py-3 min-h-[44px] flex items-center text-sm font-medium transition-colors hover:bg-accent md:py-2.5 md:min-h-0",
                               location.pathname === child.to ? "bg-accent" : "text-foreground/90"
                             )}
                           >
@@ -197,7 +197,7 @@ export default function Header() {
                   to={item.to}
                   onClick={closeAll}
                   className={cn(
-                    "rounded-lg px-3 py-3 text-sm font-medium transition-colors hover:bg-accent",
+                    "flex min-h-[44px] items-center rounded-lg px-3 py-3 text-sm font-medium transition-colors hover:bg-accent",
                     location.pathname === item.to ? "bg-accent" : ""
                   )}
                 >
@@ -205,8 +205,8 @@ export default function Header() {
                 </Link>
               );
             })}
-            <Link to="/visit-and-contact" onClick={closeAll} className="mt-2">
-              <Button variant="default" className="w-full font-semibold">
+            <Link to="/services-and-events" onClick={closeAll} className="mt-2">
+              <Button variant="default" size="lg" className="w-full font-semibold">
                 Start here
               </Button>
             </Link>

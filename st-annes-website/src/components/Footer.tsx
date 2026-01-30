@@ -48,7 +48,7 @@ export default function Footer() {
               © {new Date().getFullYear()} St. Anne's Church, Chingford. All rights reserved.
             </p>
           </div>
-          <nav className="flex flex-wrap gap-x-6 gap-y-2 lg:col-span-2 lg:justify-center">
+          <nav className="flex flex-wrap gap-x-6 gap-y-3 md:gap-y-2 lg:col-span-2 lg:justify-center">
             {footerLinks.map(({ to, label }) => (
               <Link
                 key={to}
@@ -66,7 +66,7 @@ export default function Footer() {
                 href={href}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex h-10 w-10 items-center justify-center rounded-full bg-foreground text-background transition-opacity hover:opacity-90"
+                className="flex h-11 w-11 min-h-[44px] min-w-[44px] items-center justify-center rounded-full bg-foreground text-background transition-opacity hover:opacity-90"
                 aria-label={label}
               >
                 <Icon className="h-5 w-5" />

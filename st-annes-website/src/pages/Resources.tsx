@@ -74,7 +74,7 @@ const usefulLinks: { category: string; links: { label: string; url: string }[] }
 
 export default function Resources() {
   return (
-    <div className="container mx-auto px-4 py-24">
+    <div className="container mx-auto px-4 sm:px-6 pt-8 pb-24">
       <h1 className="text-section_title mb-12">Resources</h1>
       <div className="space-y-8 max-w-5xl">
         <Card>

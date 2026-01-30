@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 export default function Give() {
   return (
-    <div className="container mx-auto px-4 py-24">
+    <div className="container mx-auto px-4 sm:px-6 pt-8 pb-24">
       <h1 className="text-section_title mb-12">Parish Giving</h1>
       <div className="max-w-3xl space-y-8">
         <Card>

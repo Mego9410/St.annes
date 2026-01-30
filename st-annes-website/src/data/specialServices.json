@@ -1,0 +1,13 @@
+[
+  { "day": "Wednesday", "date": "18th February", "time": "8:00 PM", "title": "Sung Eucharist and Ashing" },
+  { "day": "Sunday", "date": "15th March", "time": "10:00 AM", "title": "Mothering Sunday All Age Service" },
+  { "day": "Sunday", "date": "29th March", "time": "9:45 AM", "title": "Palm Sunday service starts 15 minutes early" },
+  { "day": "Sunday", "date": "29th March", "time": "5:30 PM", "title": "Prayers at the Cross" },
+  { "day": "Monday", "date": "30th March", "time": "8:00 PM", "title": "Holy Week Prayer Service" },
+  { "day": "Tuesday", "date": "31st March", "time": "8:00 PM", "title": "Holy Week Prayer Service" },
+  { "day": "Wednesday", "date": "1st April", "time": "8:00 PM", "title": "Holy Week Prayer Service" },
+  { "day": "Thursday", "date": "2nd April", "time": "8:00 PM", "title": "Eucharist - Maundy Thursday" },
+  { "day": "Friday", "date": "3rd April", "time": "10:00 AM", "title": "Informal Worship - Good Friday" },
+  { "day": "Friday", "date": "3rd April", "time": "2:00 PM", "title": "Devotional Service - Good Friday" },
+  { "day": "Saturday", "date": "4th April", "time": "8:00 PM", "title": "Easter Vigil" }
+]
