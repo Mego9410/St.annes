@@ -229,8 +229,6 @@ export default function ChurchCentre() {
     return getBusyRangesWithLabelsForDate(bookingDateObj, regularEvents, oneOffEvents);
   }, [bookingDateObj]);
 
-  const daySpanMin = BOOKING_DAY_END_MIN - BOOKING_DAY_START_MIN;
-
   const hourSlots = useMemo(() => {
     const slots: number[] = [];
     for (let m = BOOKING_DAY_START_MIN; m < BOOKING_DAY_END_MIN; m += 60) slots.push(m);
@@ -248,7 +246,6 @@ export default function ChurchCentre() {
     return opts;
   }, [maxDurationHours]);
   const durationNum = durationHours === "" ? null : durationHours;
-  const endNum = startNum != null && durationNum != null ? startNum + durationNum * 60 : null;
   const selectedSlot: BookingSlot | null =
     startNum != null && durationNum != null && durationNum >= 1
       ? { hall: bookingHall, startMin: startNum, endMin: startNum + durationNum * 60 }

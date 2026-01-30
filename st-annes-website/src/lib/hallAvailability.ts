@@ -185,9 +185,6 @@ export function getBusyRangesWithLabelsForDate(
   return { main, small };
 }
 
-const DAY_START_MIN_EXPORT = 8 * 60;
-const DAY_END_MIN_EXPORT = 22 * 60;
-
 /** For a given minute (e.g. 9*60), return the label of the busy range that contains it, or null if available. */
 export function getLabelAtMinute(minute: number, busyRangesWithLabels: BusyRangeWithLabel[]): string | null {
   for (const r of busyRangesWithLabels) {

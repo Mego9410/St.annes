@@ -10,7 +10,7 @@ type NewssheetEntry = { label: string; date: string; url: string };
 function groupByMonth(newssheets: NewssheetEntry[]): Map<string, NewssheetEntry[]> {
   const byMonth = new Map<string, NewssheetEntry[]>();
   for (const entry of newssheets) {
-    const [day, month, year] = entry.label.split(" ");
+    const [, month, year] = entry.label.split(" ");
     const key = `${month} ${year}`;
     if (!byMonth.has(key)) byMonth.set(key, []);
     byMonth.get(key)!.push(entry);
